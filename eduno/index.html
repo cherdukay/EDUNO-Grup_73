@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduno - Yapay Zeka Destekli Eğitim Platformu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-['Poppins'] bg-gradient-to-br from-gray-900 to-blue-900 text-white min-h-screen">
+    <!-- Partikül Arka Plan -->
+    <div id="particles-js" class="fixed inset-0 z-0 opacity-50"></div>
+
+    <!-- Navigation -->
+    <nav class="relative z-10 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Eduno</h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-300 hover:text-white transition-colors">Hakkımızda</a>
+                    <a href="#testimonials" class="text-gray-300 hover:text-white transition-colors">Müşteri Yorumları</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition-colors">İletişim</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <!-- Sol Taraf - Değer Önerisi -->
+                <div class="flex-1 text-center lg:text-left">
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                        Yapay Zeka ile <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Geleceğin Eğitimi</span>
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-8">
+                        Kişiselleştirilmiş öğrenme deneyimi ve yapay zeka destekli öğretmenlerle eğitimde yeni bir çağ başlıyor.
+                    </p>
+                </div>
+
+                <!-- Sağ Taraf - Login Form -->
+                <div class="flex-1 w-full max-w-md">
+                    <div class="glassmorphism p-8 rounded-2xl">
+                        <h3 class="text-2xl font-semibold mb-6 text-center">Hesabına Giriş Yap</h3>
+                        <form class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2" for="email">
+                                    E-posta Adresi
+                                </label>
+                                <input type="email" id="email" class="form-input" required>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2" for="password">
+                                    Şifre
+                                </label>
+                                <input type="password" id="password" class="form-input" required>
+                            </div>
+                            
+                            <button type="button" onclick="login()" class="login-button">
+                                Giriş Yap
+                            </button>
+
+                            <div class="relative">
+                                <div class="absolute inset-0 flex items-center">
+                                    <div class="w-full border-t border-gray-600"></div>
+                                </div>
+                                <div class="relative flex justify-center text-sm">
+                                    <span class="px-2 bg-[#111827] text-gray-400">veya</span>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <button type="button" class="social-button">
+                                    <i class="fab fa-google mr-2"></i> Google
+                                </button>
+                                <button type="button" class="social-button">
+                                    <i class="fab fa-github mr-2"></i> GitHub
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Özellikler -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Özellik 1 -->
+                <div class="feature-card">
+                    <div class="text-blue-400 mb-4">
+                        <i class="fas fa-brain text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Yapay Zeka Öğretmenler</h3>
+                    <p class="text-gray-400">7/24 erişilebilir, kişiselleştirilmiş öğrenme deneyimi sunan AI asistanlar</p>
+                </div>
+
+                <!-- Özellik 2 -->
+                <div class="feature-card">
+                    <div class="text-purple-400 mb-4">
+                        <i class="fas fa-chart-line text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Adaptif Öğrenme</h3>
+                    <p class="text-gray-400">Öğrenme hızınıza ve stilinize göre otomatik olarak uyarlanan içerik</p>
+                </div>
+
+                <!-- Özellik 3 -->
+                <div class="feature-card">
+                    <div class="text-indigo-400 mb-4">
+                        <i class="fas fa-trophy text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Gerçek Zamanlı İlerleme</h3>
+                    <p class="text-gray-400">Detaylı analizler ve kişisel gelişim raporlarıyla sürekli takip</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hakkımızda Bölümü -->
+        <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-gray-800">
+            <h2 class="text-3xl font-bold text-center mb-12">Hakkımızda</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="text-blue-400 mb-4">
+                        <i class="fas fa-building text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Şirketimiz</h3>
+                    <p class="text-gray-400">2025 yılında kurulan Eduno, yapay zeka teknolojilerini eğitimle buluşturarak geleceğin öğrenme deneyimini şekillendiriyor.</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-purple-400 mb-4">
+                        <i class="fas fa-eye text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Vizyonumuz</h3>
+                    <p class="text-gray-400">Eğitimi herkes için erişilebilir kılarak, kişiselleştirilmiş öğrenme deneyimiyle her bireyin potansiyelini en üst düzeye çıkarmak.</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-indigo-400 mb-4">
+                        <i class="fas fa-bullseye text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Misyonumuz</h3>
+                    <p class="text-gray-400">Yapay zeka teknolojilerini kullanarak, öğrencilerin bireysel ihtiyaçlarına özel, interaktif ve verimli bir eğitim platformu sunmak.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Müşteri Yorumları -->
+        <section id="testimonials" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-gray-800">
+            <h2 class="text-3xl font-bold text-center mb-12">Müşteri Yorumları</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card">
+                    <div class="mb-4">
+                        <i class="fas fa-quote-left text-blue-400 text-4xl"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6">"Yapay zeka destekli öğretmenler sayesinde matematik dersindeki başarım çok arttı. 7/24 soru sorabilmek gerçekten harika!"</p>
+                    <div class="flex items-center">
+                        <img src="https://ui-avatars.com/api/?name=Ayşe+Yılmaz&background=random" alt="Ayşe Yılmaz" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Ayşe Yılmaz</h4>
+                            <p class="text-sm text-gray-400">12. Sınıf Öğrencisi</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="mb-4">
+                        <i class="fas fa-quote-left text-purple-400 text-4xl"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6">"Çocuğumun öğrenme hızına göre ilerleyen bu sistem sayesinde derslerindeki motivasyonu çok arttı."</p>
+                    <div class="flex items-center">
+                        <img src="https://ui-avatars.com/api/?name=Mehmet+Demir&background=random" alt="Mehmet Demir" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Mehmet Demir</h4>
+                            <p class="text-sm text-gray-400">Veli</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="mb-4">
+                        <i class="fas fa-quote-left text-indigo-400 text-4xl"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6">"Bazen gün içerisinde her an müsait olamıyorum. Özellikle gece vakti öğrencilerimiz çalışırken anlık cevaplar isteyebiliyor. Bu sistem sayesinde çok rahatladık."</p>
+                    <div class="flex items-center">
+                        <img src="https://ui-avatars.com/api/?name=Zeynep+Kaya&background=random" alt="Zeynep Kaya" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Zeynep Kaya</h4>
+                            <p class="text-sm text-gray-400">Matematik Öğretmeni</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- İletişim -->
+        <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-gray-800">
+            <h2 class="text-3xl font-bold text-center mb-12">İletişim</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- İletişim Bilgileri -->
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-4">
+                        <div class="text-blue-400">
+                            <i class="fas fa-map-marker-alt text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-2">Adres</h3>
+                            <p class="text-gray-400">Eduno Genel Merkezi<br>Çankaya, Ankara</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="text-blue-400">
+                            <i class="fas fa-phone text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-2">Telefon</h3>
+                            <p class="text-gray-400">+90 (5xx) xxx xx xx</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="text-blue-400">
+                            <i class="fas fa-envelope text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-2">E-posta</h3>
+                            <p class="text-gray-400">info@eduno.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- İletişim Formu -->
+                <div class="glassmorphism p-8 rounded-2xl">
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2" for="name">
+                                Adınız Soyadınız
+                            </label>
+                            <input type="text" id="name" class="form-input" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2" for="contact-email">
+                                E-posta Adresiniz
+                            </label>
+                            <input type="email" id="contact-email" class="form-input" required>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2" for="message">
+                                Mesajınız
+                            </label>
+                            <textarea id="message" rows="4" class="form-input" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="login-button">
+                            Mesaj Gönder
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="app.js" defer></script>
+</body>
+</html>

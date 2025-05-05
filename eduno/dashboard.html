@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Okulları - Eduno Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <img src="https://ui-avatars.com/api/?name=ABC&bold=true&background=3b82f6&color=fff" alt="ABC Okulları" class="h-10 w-10 rounded">
+                    <div>
+                        <h1 class="text-xl font-bold text-blue-600">ABC Okulları</h1>
+                        <p class="text-sm text-gray-500">Eduno AI Öğrenme Platformu</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div class="flex items-center space-x-2">
+                        <img id="userAvatar" class="h-8 w-8 rounded-full" src="" alt="Kullanıcı">
+                        <span id="userName" class="text-gray-700"></span>
+                    </div>
+                    <button onclick="logout()" class="text-gray-600 hover:text-gray-800 flex items-center">
+                        <i class="fas fa-sign-out-alt mr-2"></i> Çıkış
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Ana İçerik -->
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Karşılama Mesajı -->
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg shadow-lg p-6 mb-8 text-white">
+            <h2 class="text-2xl font-bold mb-2">ABC Okulları'na Hoş Geldiniz!</h2>
+            <p>Yapay zeka destekli öğretmenlerimiz 7/24 hizmetinizde.</p>
+        </div>
+
+        <!-- Dersler -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Branşlar ve Öğretmenler</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Matematik -->
+                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-calculator text-blue-500 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold text-gray-800">Matematik</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">ABC Matematik Öğretmenleri</p>
+                    <button onclick="showTeachers('matematik')" class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-300">
+                        Öğretmenleri Gör
+                    </button>
+                </div>
+
+                <!-- Fizik -->
+                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-atom text-purple-500 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold text-gray-800">Fizik</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">ABC Fizik Öğretmenleri</p>
+                    <button onclick="showTeachers('fizik')" class="w-full bg-purple-500 text-white py-2 rounded-md hover:bg-purple-600 transition duration-300">
+                        Öğretmenleri Gör
+                    </button>
+                </div>
+
+                <!-- Kimya -->
+                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-flask text-green-500 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold text-gray-800">Kimya</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">ABC Kimya Öğretmenleri</p>
+                    <button onclick="showTeachers('kimya')" class="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition duration-300">
+                        Öğretmenleri Gör
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Öğretmenler Modal -->
+        <div id="teachersModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-10">
+            <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 id="modalTitle" class="text-2xl font-semibold"></h2>
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="teachersList" class="space-y-4">
+                    <!-- Öğretmenler dinamik olarak buraya eklenecek -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Chatbot Modal -->
+        <div id="chatModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20">
+            <div class="bg-white rounded-lg w-full max-w-2xl mx-4 h-[600px] flex flex-col">
+                <div class="flex justify-between items-center p-4 border-b">
+                    <div class="flex items-center">
+                        <img id="teacherAvatar" src="" alt="Öğretmen" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h3 id="teacherName" class="text-xl font-semibold"></h3>
+                            <p id="teacherSubject" class="text-sm text-gray-500"></p>
+                        </div>
+                    </div>
+                    <button onclick="closeChatModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-4">
+                    <!-- Mesajlar dinamik olarak buraya eklenecek -->
+                </div>
+                <div class="border-t p-4">
+                    <div class="flex space-x-2">
+                        <input type="text" id="messageInput" class="flex-1 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Mesajınızı yazın...">
+                        <button onclick="sendMessage()" class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition duration-300">
+                            Gönder
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABC Okulları Footer -->
+    <footer class="bg-white border-t mt-12 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <img src="https://ui-avatars.com/api/?name=ABC&bold=true&background=3b82f6&color=fff" alt="ABC Okulları" class="h-12 w-12 mx-auto mb-4 rounded">
+            <p class="text-gray-600">© 2025 ABC Okulları - Eduno AI Öğrenme Platformu</p>
+        </div>
+    </footer>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
